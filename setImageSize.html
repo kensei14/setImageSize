@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>HTML</title>
+		<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+		<style>
+			.img {
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+		<script>
+			var img;
+			var j_img;
+			
+			document.addEventListener("DOMContentLoaded", function() {
+				img = document.getElementById("target_img");
+				j_img = $("#target_img");
+								
+				consoleSize();
+				setAttr(200, 200);
+				consoleSize();
+				setCss(400, 400);
+				consoleSize();
+				setAttr(200, 200);
+				consoleSize();
+			}, false);
+			
+			function setCss(num_width, num_height) {
+				var width = String(num_width);
+				var height = String(num_height);
+				/*
+				img.style.width = width + "px";
+				img.style.height = height + "px";
+				*/
+				j_img.css({
+					width: width,
+					height: height
+				});
+			}
+		
+			function setAttr(width, height) {
+				/*
+				img.width = "400";
+				img.height = "400";
+				*/		
+				img.setAttribute("width", width + "");
+				img.setAttribute("height", height + "");
+			}
+			
+			function consoleSize() {
+				console.log("");
+				console.log("CSS size       = width  : " + img.style.width + "  height  : " + img.style.height);
+				console.log("Attribute size = width  : " + img.width + "  height  : " + img.height);
+			}
+			
+		</script>
+		<meta name="author" content="Mack" />
+		<!-- Date: 2012-08-09 -->
+	</head>
+	<body>
+		<p>CSSを変更すると同時にAttributeも変更される。</p>
+		<p>CSSが設定されている要素にAttributeを設定しようとしても無視される。</p>
+		<img id="target_img" src="./desert.jpg" />
+	</body>
+</html>
+
